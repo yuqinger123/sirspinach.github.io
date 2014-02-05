@@ -1,0 +1,102 @@
+<html>
+<head>
+	<title>wangster</title>
+	<link rel="stylesheet" href="style.css"/>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+	<div id="header" class="container">
+		<a href="index.html"><h1>wangster</h1></a>
+	</div>
+	<br>
+
+	<!-- begin tabs -->
+	<div class="tabbed-menu">
+		<!-- .tabs li with id "tab-<name>" upon selection will display content with id <name>-->
+		<ul class="tabs">
+			<li id="tab-kittens" class="selected">kittehs</li>
+			<li id="tab-stars">sky</li>
+			<li id="tab-formz">forms</li>
+		</ul>
+	</div>
+
+	<!-- begin content -->
+	<div class="content" id="kittens">
+		<h2>Fibonnacci Kittehs</h2>
+		<div id="kitten-img-container">
+			<img class="kitten" src="http://placekitten.com/800/10"/>
+			<img class="kitten" src="http://placekitten.com/800/10"/>
+			<img class="kitten" src="http://placekitten.com/800/20"/>
+			<img class="kitten" src="http://placekitten.com/800/30"/>
+			<img class="kitten" src="http://placekitten.com/800/50"/>
+			<img class="kitten" src="http://placekitten.com/800/80"/>
+			<img class="kitten" src="http://placekitten.com/800/130"/>
+			<img class="kitten" src="http://placekitten.com/800/210"/>
+		</div>
+		<button id="more-kittens">More kittehs?</button>
+	</div>
+	<div class="content" id="stars">
+		<canvas id="canvas-stars"><p>canvas is not supported...</p></canvas>
+	</div>
+	<div class="content container" id="formz">
+		<p>hai</p>
+		<form name="formz">
+			<input type="text">
+		</form>
+	</div>
+
+</body>
+
+<script src="canvas-stars.js"></script>
+<script>
+	$(document).ready(function() {
+		//show initially selected content
+		selectContent($("ul.tabs li.selected").attr('id'));
+
+		//process tab click
+		$("ul.tabs li").click(function() {
+			//tab selection
+			$("ul.tabs li.selected").each(function() {
+				$(this).removeClass("selected");
+			})
+			$(this).addClass("selected");
+
+			//show content corresponding to selected tab
+			selectContent($(this).attr('id'));
+		});
+
+		//process 'more kittens' button click
+		$('button#more-kittens').click(moreKittens);
+
+	});
+
+	function selectContent(tabId) {
+		//first unselect all content
+		$("div.content.selected").each(function() {
+			$(this).removeClass("selected");
+		});
+
+		//tabId is of form "tab-<pageId>"
+		//so just remove "tab-" to get "<pageId>"
+		if (!tabId) return; //prevent error due to undefined.substr() 
+		var contentId = tabId.substr(4);
+		//alert(contentId);
+		$('#'+contentId).addClass("selected");
+	}
+
+	//begin Fibonnaci kittens utility
+	function moreKittens() {
+		var kittenNumber = $('div#kitten-img-container img.kitten').length;
+		//alert('kittenNumber: '+kittenNumber);
+
+		$('div#kitten-img-container').append('<img class="kitten" src="http://placekitten.com/800/'+fib(kittenNumber)*10+'">');
+		window.setTimeout(function(){window.scrollTo(0, document.height)},50);
+	}
+
+	function fib(n) {
+		if (n < 0) throw n+ "is invalid!";
+		else if (n == 0 || n == 1) return 1;
+		else return fib(n-1) + fib(n-2);
+	}
+</script>
+</html>

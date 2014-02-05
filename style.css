@@ -1,0 +1,108 @@
+/*begin header styling*/
+div.container {
+	width: 800px;
+	margin: 0 auto;
+	position: relative;
+	vertical-align: center;
+}
+#header {
+}
+div#header a h1 {
+	font-family: orbitron, Helvetica;
+	display: inline;
+	font-weight: bold;
+	background: #fff;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+
+/*begin menu styling*/
+div.tabbed-menu {
+	font-family: orbitron, Helvetica;
+	font-size: 20px;
+}
+
+ul.tabs {
+    text-align: center;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    color: #0088CC;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+ul.tabs li { /*when not selected, tab is translucent and does not connect with content*/
+	margin-bottom: -1px;
+	padding: 3px 10px 0 10px;
+	border: 1px solid #DDDDDD;
+	background: #EFEFEF;
+	display: inline;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+ul.tabs li:hover { /*when not selected, hover makes tab translucent green*/
+	background: #AADFAA;
+	cursor: default;
+}
+
+ul.tabs li.selected { /*when selected, tab is transparent and connects with content*/
+	background: #fff;
+	border-bottom-color: transparent;
+}
+ul.tabs li.selected#tab-stars {
+	background-color: transparent;
+	border-bottom-color: #05004c;
+	color: white;
+}
+ul.tabs li.selected:hover {
+	background: #fff;
+	border-bottom-color: transparent;
+}
+
+/*begin content styling*/
+div.content {
+	display: none;
+	margin: 0 auto;
+}
+div.content.selected {
+	display: block;
+}
+div.content * {
+	margin: 0 auto;
+}
+
+/*begin kitten styling*/
+div#kittens {
+	background-color: #FFB7C5;
+}
+div#kittens h2 {
+	padding-top: 20px;
+	font-family: Arial;
+	color: #eee;
+	text-align: center;
+	font-size: 3em;
+}
+img.kitten {
+	display: block;
+	opacity: .8;
+	border: 1px pink dotted;
+	margin: 10 auto;
+}
+button#more-kittens {
+	display: block;
+}
+
+/*begin canvas-stars styling*/
+div.content#stars {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+canvas#canvas-stars{
+	background-color: #05004c;
+}
