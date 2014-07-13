@@ -23,7 +23,7 @@ Stars.Star = function(x, y, options) {
 	this.size = options.size || Math.random() * 2;
 	this.color = options.color || "white";
 
-	this.vx = Math.random() *.20;
+	this.vx = Math.random() *.05;
 }
 Stars.Star.prototype.update = function() {
 	//update position
